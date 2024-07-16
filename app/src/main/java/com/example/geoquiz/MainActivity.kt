@@ -36,6 +36,7 @@ class MainActivity : AppCompatActivity() {
         val currentIndex = savedInstanceState?.getInt(KEY_INDEX, 0) ?: 0
         quizViewModel.currentIndex = currentIndex
 
+        
         trueButton = findViewById<Button>(R.id.true_button)
         falseButton = findViewById<Button>(R.id.false_button)
         nextButton = findViewById<ImageButton>(R.id.next_button)
