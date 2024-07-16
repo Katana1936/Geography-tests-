@@ -8,10 +8,11 @@ import android.widget.Button
 import android.widget.ImageButton
 import android.widget.TextView
 import android.widget.Toast
-import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
 
 private const val TAG = "MainActivity"
+private const val KEY_INDEX = "index"
 
 class MainActivity : AppCompatActivity() {
 
@@ -21,8 +22,10 @@ class MainActivity : AppCompatActivity() {
     private lateinit var backButton: ImageButton
     private lateinit var questionTextView: TextView
 
-    // Инициализация ViewModel с использованием делегата viewModels
-    private val quizViewModel: QuizViewModel by viewModels()
+    // Инициализация ViewModel с использованием делегата lazy
+    private val quizViewModel: QuizViewModel by lazy {
+        ViewModelProvider(this).get(QuizViewModel::class.java)
+    }
 
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -30,11 +33,14 @@ class MainActivity : AppCompatActivity() {
         Log.d(TAG, "onCreate(Bundle?) called")
         setContentView(R.layout.activity_main)
 
-        trueButton = findViewById(R.id.true_button)
-        falseButton = findViewById(R.id.false_button)
-        nextButton = findViewById(R.id.next_button)
-        backButton = findViewById(R.id.backButton)
-        questionTextView = findViewById(R.id.question_text_view)
+        val currentIndex = savedInstanceState?.getInt(KEY_INDEX, 0) ?: 0
+        quizViewModel.currentIndex = currentIndex
+
+        trueButton = findViewById<Button>(R.id.true_button)
+        falseButton = findViewById<Button>(R.id.false_button)
+        nextButton = findViewById<ImageButton>(R.id.next_button)
+        backButton = findViewById<ImageButton>(R.id.backButton)
+        questionTextView = findViewById<TextView>(R.id.question_text_view)
 
         Log.d(TAG, "Got a QuizViewModel: $quizViewModel")
 
@@ -73,6 +79,12 @@ class MainActivity : AppCompatActivity() {
     override fun onPause() {
         super.onPause()
         Log.d(TAG, "onPause() called")
+    }
+
+    override fun onSaveInstanceState(savedInstanceState: Bundle) {
+        super.onSaveInstanceState(savedInstanceState)
+        Log.i(TAG, "onSaveInstanceState")
+        savedInstanceState.putInt(KEY_INDEX,quizViewModel.currentIndex)
     }
 
     override fun onStop() {
