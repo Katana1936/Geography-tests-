@@ -10,6 +10,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
+import android.content.Intent
 
 private const val TAG = "MainActivity"
 private const val KEY_INDEX = "index"
@@ -65,6 +66,8 @@ class MainActivity : AppCompatActivity() {
 
         cheatButton.setOnClickListener {
             // Начало CheatActivity
+            val intent = Intent(this, CheatActivity::class.java)
+            startActivity(intent)
         }
 
         backButton.setOnClickListener {

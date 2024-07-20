@@ -50,13 +50,6 @@
         android:background="?android:attr/selectableItemBackground" />
 
 
-        <Button
-            android:id="@+id/cheat_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:text="@string/cheat_button" />
-
         <ImageButton
             android:id="@+id/next_button"
             android:layout_width="48dp"
@@ -65,5 +58,12 @@
             android:contentDescription="next"
             android:background="?android:attr/selectableItemBackground" />
     </LinearLayout>
+
+    <Button
+        android:id="@+id/cheat_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="@string/cheat_button" />
 
 </LinearLayout>
