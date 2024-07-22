@@ -37,19 +37,12 @@
 
         <ImageButton
             android:id="@+id/backButton"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:src="@drawable/arrow_left"
+            android:layout_width="45dp"
+            android:layout_height="34dp"
+            android:background="?android:attr/selectableItemBackground"
             android:contentDescription="back"
-            android:background="?android:attr/selectableItemBackground" />
+            android:src="@drawable/arrow_left" />
 
-        <ImageButton
-            android:id="@+id/next_button"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:src="@drawable/arrow_right"
-            android:contentDescription="next"
-            android:background="?android:attr/selectableItemBackground" />
     </LinearLayout>
 
 </LinearLayout>
